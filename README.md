@@ -1,32 +1,26 @@
 # Android-Intent-Example
+
 Intent ile sayfalar (layout'lar) arası geçiş. / Switching between pages (layouts) with intent
 
 Yeni bir proje oluşturduğumuzda pojemiz bize varsayılan olarak bir ActivityMain.java sınıfını bir de activity_main.xml view’ini veriyor. Bu bizim birinci ekranımız.
 
 İkinci ekranı oluşturmak için öncelikle res klasörünün altında yer alan layout klasörüne sağ tıklıyoruz. New > Layout recourse file diyerek activity_hakkinda adında yeni bir layout oluşturuyoruz.
 
-
-
 Ardından java klasörümüzün altında yer alan klasöre sağ tıklayıp New > Java Class diyerek yeni bir HakkindaActivity adında bir java sınıfı oluşturuyoruz.
 
-
-
 Sınıfımızı oluşturduktan sonra sınıfın içine girip activity özelliği kazanabilmesi için public class satırına aşağıdaki gibi extends AppCompatActivity yazıyoruz.
------------------------------------
 
+```java
 public class HakkindaActivity extends AppCompatActivity {
+```
 
------------------------------------
 Sonra AppCompatActivity yazısının üzerine tıklayıp alt+enter tuşlarına basarak gerekli kütüphanesini import ediyoruz.
 
 Sonrasında public class’in içine tıklayıp alt + insert tuşlarına basarak override methods içerisinden en üstteki onCreate metodunu seçiyoruz.
 
-
-
 Bu metodun içerisinde hangi layout’u bağlayacağımızı belirtmek için setContentView(R.layout.activity_hakkinda) diyerek bizim biraz önce oluşturmuş olduğumuz hakkina_activity.xml i işaret ediyoruz.
 
------------------------------------
-
+```java
 public class HakkindaActivity extends AppCompatActivity {
 
     @Override
@@ -35,29 +29,19 @@ public class HakkindaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hakkinda);
     }
 }
-
------------------------------------
-
-
-
-
+```
 
 Geriye bu activity’i programımıza tanıtmak kalıyor. Bunun için de proje klasörümüzün içindeki manifest klasörünün altında yer alan AndroidManifest.xml içerisine;
-
+```java
 <activity android:name=".HakkindaActivity" />
-
+```
 kodunu ekleyerek programımıza tanıtmış olduk.
-
 
 Sırada layoutları düzenleyerek java tarafında sayfalar arasında geçişi sağlayacak kodu yazmaya geldi.
 
+# activity_main.xml
 
-
-
-
-activity_main.xml
------------------------------------
-
+```java
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -87,15 +71,12 @@ activity_main.xml
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
------------------------------------
+```
 
 
+# activity_hakkinda.xml
 
-
-
-
-activity_hakkinda.xml
------------------------------------
+```java
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -125,24 +106,16 @@ activity_hakkinda.xml
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
------------------------------------
-
-
-
-
+```
 
 1. ve 2. sayfalarımızda buton ve textview’ler var. Butonlara java ile erişebilmek için sırasıyla button_page_1 ve button_page_2 id’lerini verdik.
 
 Şimdi MainActivity sınıfımızın içerisinde önce Button dan bir nesne tanımlaması ardından bu nesnemize click özelliği kazandırma işlemini yapacağız. Buttonumuza tıklandığında Intent sınıfından bir nesne türeterek bu nesnemizin içine ikinci layout sınıfımızı yerleştiriyor ve ardından startActivity özelliği kullanarak ikinci ekranımıza geçiş yapmış oluyoruz. Aşağıdaki kodları yazarken herhangi bir yazı kırmızı olursa bu o kütüphanenin olmadığını belirtir. Kırmızı yazının üzerine bir kez tıklayıp alt+enter tuşlarına basarsak sınıfımızın içerisine o gerekli kütüphane otomatik olarak yukarıya eklenecekir.
 
 
+# MainActivity.java
 
-
-
-
-MainActivity.java
------------------------------------
-
+```java
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -166,23 +139,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentislemi);
             }
         });
-    }}
-
------------------------------------
-
-
+    }
+}
+```
 
 Artık 1.sayfadayken “Go to page 2” butonuna bastığımızda bizi 2.sayfaya gönderebiliyor.
 
 Şimdi 2.sayfadan 1.sayfaya dönebilmek için HakkindaActivity.java sınıfımıza gerekli kodları yazalım.
 
 
+# HakkindaActivity.java
 
-
-
-HakkindaActivity.java
------------------------------------
-
+```java
 public class HakkindaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -204,9 +172,9 @@ public class HakkindaActivity extends AppCompatActivity {
                 startActivity(intentislemi);
             }
         });
-    }}
-
------------------------------------
+    }
+}
+```
 
 
 İşlemimiz bu kadar.
