@@ -2,7 +2,7 @@
 
 Intent ile sayfalar (layout'lar) arası geçiş. / Switching between pages (layouts) with intent
 
-![](screenshot.gif)
+<img src="screenshot.gif" height="500">
 
 Yeni bir proje oluşturduğumuzda pojemiz bize varsayılan olarak bir ActivityMain.java sınıfını bir de activity_main.xml view’ini veriyor. Bu bizim birinci ekranımız.
 
