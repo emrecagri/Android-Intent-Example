@@ -4,6 +4,10 @@ Intent ile sayfalar (layout'lar) arası geçiş. / Switching between pages (layo
 
 <img src="screenshot.gif" height="500">
 
+---
+
+# Bu Projenin Yapımı
+
 Yeni bir proje oluşturduğumuzda pojemiz bize varsayılan olarak bir ActivityMain.java sınıfını bir de activity_main.xml view’ini veriyor. Bu bizim birinci ekranımız.
 
 İkinci ekranı oluşturmak için öncelikle res klasörünün altında yer alan layout klasörüne sağ tıklıyoruz. New > Layout recourse file diyerek activity_hakkinda adında yeni bir layout oluşturuyoruz.
